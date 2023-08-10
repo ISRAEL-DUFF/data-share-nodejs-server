@@ -4,10 +4,14 @@ import processImageMiddleware from './middleware/processImageMiddleware';
 import cors from 'cors'
 import { UserModel } from './types';
 import firebaseService from './firebase';
+import * as path from 'path'
 
 const app: Express = express();
 app.use(cors())
+app.use('/', express.static(path.join(__dirname, 'public')))
 app.use(express.json())
+// app.use("/frontend", express.static('public'))
+
 
 const port = process.env.PORT ?? 5000;
 
